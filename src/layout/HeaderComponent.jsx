@@ -1,25 +1,42 @@
 import logo from "../assets/logo.jpeg";
 
-import { Center, Heading, Image } from "@chakra-ui/react";
-// import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { Center, Heading, Image, Button, useBreakpointValue } from "@chakra-ui/react";
+import { MdCall, MdEventNote, MdShoppingCart } from "react-icons/md";
 
 function HeaderComponent() {
+  const justifyContent = useBreakpointValue({ sm: "center", xl: "space-between" });
   return (
-    <Center as="header" bg="060606" mt={5} color="#006400" pointerEvents="none">
-      <Image src={logo} h="4em" alt="check-list icon" />
-      <Heading>Aménagement extérieur & intérieur</Heading>
-      {/* <IconButton
-        onClick={toggleColorMode}
-        icon={icon}
-        bg={colorMode}
-        color={textColor}
-        position="absolute"
-        top="49px"
-        right="25%"
-        _hover={{ bg: hover }}
-        _focus={{ boxShadow: "none" }}
-        pointerEvents="auto"
-      /> */}
+    <Center
+      as="header"
+      color="#f4f4f4"
+      maxW="1200px"
+      w="95vw"
+      justifyContent={justifyContent}
+      flexWrap="wrap"
+      gap={4}
+      p={4}
+    >
+      <Center pointerEvents="none" gap={5} maxW='400px'>
+        <Image src={logo} h="4em" alt="check-list icon" />
+        <Heading size={"lg"}>Aménagement extérieur & intérieur</Heading>
+      </Center>
+      <Center gap={5}>
+        <Button rightIcon={<MdCall />} colorScheme="blue" variant="outline">
+          Call us
+        </Button>
+        <Button rightIcon={<MdEventNote />} colorScheme="blue" variant="solid">
+          More Information
+        </Button>
+      </Center>
+      <Center gap={5}>
+        <Button
+          rightIcon={<MdShoppingCart />}
+          colorScheme="blue"
+          variant="outline"
+        >
+          Buy now
+        </Button>
+      </Center>
     </Center>
   );
 }
